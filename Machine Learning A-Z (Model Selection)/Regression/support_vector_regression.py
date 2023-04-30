@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Importing the dataset
-dataset = pd.read_csv('Data.csv')
+dataset = pd.read_csv('ENTER_THE_NAME_OF_YOUR_DATASET_HERE.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 y = y.reshape(len(y),1)
@@ -28,7 +28,7 @@ regressor = SVR(kernel = 'rbf')
 regressor.fit(X_train, y_train)
 
 # Predicting the Test set results
-y_pred = sc_y.inverse_transform(regressor.predict(sc_X.transform(X_test)).reshape(-1,1))
+y_pred = sc_y.inverse_transform(regressor.predict(sc_X.transform(X_test)))
 np.set_printoptions(precision=2)
 print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
 
